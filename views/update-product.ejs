@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+    <div class="body">
+        <h1>Update Product</h1>
+        <form action="/update/<%= product.id %>" method="POST" enctype="multipart/form-data">
+            <div class="name">
+                <p>Name</p>
+                <input type="text" name="name" placeholder="<Please input product's name>" value="<%= product.name %>" />
+            </div>
+            <div class="price">
+                <p>Price</p>
+                <input type="text" name="price" placeholder="Please input product's price" value="<%= product.price %>" />
+            </div>
+            <div class="name">
+                <p>City</p>
+                <input type="text" name="city" placeholder="Please input product's city" value="<%= product.city %>" />
+            </div>
+            <div class="quantity">
+                <p>Quantity</p>
+                <input type="text" name="quantity" placeholder="Please input product's quantity" value="<%= product.quantity %> " />
+            </div>
+            <div class="image">
+                <p>Image</p>
+                <input type="file" name="myImage" />
+            </div>
+            <button type="submit">Update</button>
+        </form>
+    </div>
+</body>
+
+</html>

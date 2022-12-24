@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Demo</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+</head>
+
+<body>
+    <div class="body">
+        <h1>Manage Product</h1>
+        <a href="/add-product"><button>Add Product</button></a>
+        <form class="search" action="/search-product" method="POST">
+            <input type="text" name="keyword" placeholder="Enter name of product" />
+            <button type="submit">Search</button>
+        </form>
+        <% if(products.length > 0) { %>
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>City</th>
+                    <th>Quantity</th>
+                    <th>Image</th>
+                    <th>Manage</th>
+                </tr>
+                <% products.forEach((item) => { %>
+                    <tr>
+                        <td>
+                            <%= item.name %>
+                        </td>
+                        <td>
+                            <%= item.price %>
+                        </td>
+                        <td>
+                            <%= item.city %>
+                        </td>
+                        <td>
+                            <form action="/increase/<%= item.name %>" method="POST">
+                                <button type="submit">+</button>
+                            </form>
+                            <%= item.quantity %>
+                                <form action="/decrease/<%= item.name %>" method="POST">
+                                    <button type="submit">-</button>
+                                </form>
+                        </td>
+                        <td>
+                            <img src="/images/<%= item.image.data %>" alt="" width="100px" height="100px" />
+                        </td>
+                        <td>
+                            <a href="/delete-product/<%= item.id %>">Delete</a>
+                            <a href="/update-product/<%= item.id %> ">Update</a>
+                        </td>
+                    </tr>
+                    <% }) %>
+            </table>
+            <% } else { %>
+                <h2>This Product Is Empty</h2>
+                <% } %>
+    </div>
+</body>
+
+</html>
